@@ -1,3 +1,0 @@
-selenium
-webdriver-manager
-windows-curses; platform_system == "Windows"
