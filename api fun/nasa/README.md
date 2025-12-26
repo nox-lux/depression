@@ -1,4 +1,4 @@
-<img src='nasa.jpg' width=120%>
+<img src='nasa.jpg' width=100%>
 
 - generic API call
 - runs the moment you open it

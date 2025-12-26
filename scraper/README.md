@@ -1,4 +1,4 @@
-<img src='scraper.jpg' width=120%>
+<img src='scraper.jpg' width=100%>
 
 - basic website scraper
 - use in `https://...` format
