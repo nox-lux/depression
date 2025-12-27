@@ -48,6 +48,7 @@ def container():
             f.write(str(e))
             f.close()
             print("Something went wrong... Information saved in 'log.txt'")
+        return
 
     ACTIONS = {
         "p": output_paragraphs,
