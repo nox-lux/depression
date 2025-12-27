@@ -33,13 +33,16 @@ def container():
     print(banner)
     print('Note! Some tags might be returned empty due to it being represented with other types of data (example: images)')
     website = input('Enter a website to scrape:\n')
-    driver = browser()
+    driver = browser() # initialize browser
     driver.get(website)
 
     ACTIONS = {
         "p": output_paragraphs,
         "a": output_links,
         "h": output_headings,
+        "ul": output_ul,
+        "ol": output_ol,
+        "li": output_li,
     }
 
     while True:
@@ -92,12 +95,32 @@ def output_links(driver):
         if href:
             print(href)
 
+def output_ul(driver):
+    ul = driver.find_elements(By.TAG_NAME, "ul")
+    print(f"Found {len(ul)} <ul> tags!")
+    for p in ul:
+        print(p.text)
+
+def output_ol(driver):
+    ol = driver.find_elements(By.TAG_NAME, "ol")
+    print(f"Found {len(ol)} <ol> tags!")
+    for p in ol:
+        print(p.text)
+
+def output_li(driver):
+    li = driver.find_elements(By.TAG_NAME, "li")
+    print(f"Found {len(li)} <li> tags!")
+    for p in li:
+        print(p.text)
 
 def choose(stdscr):
     options = [
         ("p", "Paragraphs: <p>"),
         ("a", "Links: <a href='...'>"),
         ("h", "Headings: <h1/2/3/4/5/6>"),
+        ("ul", "Unordered Lists: <ul>"),
+        ("ol", "Ordered Lists: <ol>"),
+        ("li", "list Item: <li>"),
         ("q", "Quit"),
     ]
     idx = 0
