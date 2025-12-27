@@ -11,11 +11,16 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+from colorama import init, Fore, Back, Style
 import curses
 import time
 import os
 
+
+
 # clear on run
+# initialize colorama
+init(autoreset=True)
 clear = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 clear()
 
@@ -30,11 +35,19 @@ banner= r"""
 
 # container
 def container():
-    print(banner)
-    print('Note! Some tags might be returned empty due to it being represented with other types of data (example: images)')
-    website = input('Enter a website to scrape:\n')
-    driver = browser() # initialize browser
-    driver.get(website)
+    print(Fore.LIGHTCYAN_EX + banner)
+    print(Fore.LIGHTYELLOW_EX +"Note! Some tags might be returned empty due to it being represented with other types of data (example: images)")
+    website = input("Enter a website to scrape:\n")
+    try:
+        driver = browser() # initialize browser
+        driver.get(website)
+    except Exception as e:
+        if not website: print("...Where's the website?")
+        else: 
+            f = open("log.txt", "w")
+            f.write(str(e))
+            f.close()
+            print("Something went wrong... Information saved in 'log.txt'")
 
     ACTIONS = {
         "p": output_paragraphs,
@@ -48,11 +61,15 @@ def container():
     while True:
         choice = curses_choose()
         if choice == "q":
-            print('Exiting, be back soon.')
+            print("Exiting, be back soon.")
             break
-
-        ACTIONS[choice](driver)
-        input('\nEnter to continue...')
+        try: ACTIONS[choice](driver)
+        except Exception as e:
+            f = open('log.txt', 'w')
+            f.writelines(str(e))
+            f.close()
+            print("Something went wrong... Information saved in 'log.txt'")
+        input("\nEnter to continue...")
 
     driver.quit()
 
@@ -74,6 +91,8 @@ def output_paragraphs(driver):
     paragraphs = driver.find_elements(By.TAG_NAME, "p")
     print(f"Found {len(paragraphs)} <p> tags!")
     for p in paragraphs:
+        text = p.text.strip()
+        if not text: continue
         print(p.text)
 
 def output_headings(driver):
@@ -83,6 +102,8 @@ def output_headings(driver):
         headings = driver.find_elements(By.TAG_NAME, f"h{heading}")
         print(f"Found {len(headings)} <h{heading}> tags!")
         for p in headings:
+            text = p.text.strip()
+            if not text: continue
             print(p.text)
     for i in levels:
         all_headings(i)
@@ -99,18 +120,24 @@ def output_ul(driver):
     ul = driver.find_elements(By.TAG_NAME, "ul")
     print(f"Found {len(ul)} <ul> tags!")
     for p in ul:
+        text = p.text.strip()
+        if not text: continue
         print(p.text)
 
 def output_ol(driver):
     ol = driver.find_elements(By.TAG_NAME, "ol")
     print(f"Found {len(ol)} <ol> tags!")
     for p in ol:
+        text = p.text.strip()
+        if not text: continue
         print(p.text)
 
 def output_li(driver):
     li = driver.find_elements(By.TAG_NAME, "li")
     print(f"Found {len(li)} <li> tags!")
     for p in li:
+        text = p.text.strip()
+        if not text: continue
         print(p.text)
 
 def choose(stdscr):
