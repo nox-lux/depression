@@ -76,7 +76,7 @@ def container():
 
 def browser():
     options = Options()
-    options.add_argument("--headless")
+    options.add_argument("--headless") # COMMENT IF SOMETHING BREAKS
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()),
         options=options
