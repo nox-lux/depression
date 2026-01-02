@@ -30,10 +30,10 @@ banner = r"""
 def takeDate():
     D = int(input("Date: "))
     M = int(input("Month: "))
-    if D > 12:
+    if M > 12:
         print("There aren't more than 12 months...")
         return
-    if M in (4,6,9,11) and date > 30:
+    if M in (4,6,9,11) and D > 30:
         print("This month has only 30 days...")
         return
     Y = int(input('Year: '))
