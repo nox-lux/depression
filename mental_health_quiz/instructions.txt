@@ -1,0 +1,28 @@
+How to Use the Mental Health Quiz
+
+Welcome to the Mental Health Quiz! This tool is designed to help you with self-reflection on various aspects of your well-being.
+
+How the Quiz Works:
+
+1. Enter your name on the home screen.
+2. Click "Start Quiz" to begin.
+3. You will be presented with a series of questions, each randomly selected from a different category of mental wellness (like Sleep, Social, Stress, etc.).
+
+Scoring System:
+
+- For each question, select the radio button that best reflects your feelings.
+- Your choices are assigned a point value. Better moods and healthier habits result in a positive score, while less healthy ones result in a negative score.
+- The importance of the category affects the score range. For example, "Sleep" is a critical factor, so its scores range from +10 to -10. A less critical area like "Hobbies" might range from +5 to -5.
+- The goal is not to get the "highest score," but to answer honestly to get a meaningful reflection.
+
+Results Page:
+
+- After the final question, you'll see your total score and a general assessment of your current well-being.
+- A bar graph will show a breakdown of your performance in each category. For easy comparison, all scores on the graph are converted to a 0-100 scale, where a higher bar is always better.
+
+History:
+
+- Your results (including your name) are saved automatically.
+- You can view past results on the "Health History" page. From there, you can also export your entire history to a CSV file for your personal records.
+
+Disclaimer: This quiz is a tool for personal insight and is not a medical diagnosis. If you are struggling with your mental health, please consider seeking guidance from a qualified healthcare professional.
